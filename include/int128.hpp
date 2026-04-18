@@ -49,5 +49,13 @@ public:
     bool operator==(const Int128& other) const;
     bool operator!=(const Int128& other) const;
 
+    Int128 operator%(const Int128& other) const;
+    Int128& operator%=(const Int128& other);
+
+    bool operator<(const Int128& other) const;
+    bool operator<=(const Int128& other) const;
+    bool operator>(const Int128& other) const;
+    bool operator>=(const Int128& other) const;
+
     friend std::ostream& operator<<(std::ostream& os, const Int128& v);
 };

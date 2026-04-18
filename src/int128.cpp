@@ -269,6 +269,34 @@ bool Int128::operator!=(const Int128& other) const {
     return !(*this == other);
 }
 
+Int128 Int128::operator%(const Int128& other) const {
+    return *this - (*this / other) * other;
+}
+
+Int128& Int128::operator%=(const Int128& other) {
+    *this = *this % other;
+    return *this;
+}
+
+bool Int128::operator<(const Int128& other) const {
+    if (high != other.high) {
+        return high < other.high;
+    }
+    return low < other.low;
+}
+
+bool Int128::operator<=(const Int128& other) const {
+    return *this < other || *this == other;
+}
+
+bool Int128::operator>(const Int128& other) const {
+    return other < *this;
+}
+
+bool Int128::operator>=(const Int128& other) const {
+    return other <= *this;
+}
+
 std::ostream& operator<<(std::ostream& os, const Int128& v) {
     os << v.str();
     return os;
